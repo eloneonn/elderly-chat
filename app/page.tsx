@@ -91,7 +91,7 @@ export default function Home() {
             <div className="flex w-full max-w-4xl flex-col gap-4">
               <button
                 onClick={handleBackToProfiles}
-                className="self-start rounded-full bg-[rgba(246,166,178,0.12)] px-4 py-2 text-sm font-medium text-muted transition-colors hover:bg-[rgba(246,166,178,0.2)] hover:text-foreground"
+                className="self-start rounded-full bg-[rgba(246,166,178,0.12)] px-4 py-2 text-sm font-medium text-muted transition-colors hover:bg-[rgba(246,166,178,0.2)] hover:text-foreground cursor-pointer"
               >
                 <span className="inline-flex items-center gap-2">
                   <svg

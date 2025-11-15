@@ -21,7 +21,15 @@ export default function ProfileSelector({
             Life OS Companion
           </h1>
           <p className="text-sm font-medium text-muted">
-            A calm corner for heartfelt conversations and friendly guidance.
+            A demo app to showcase the possibilities of tool-assisted
+            conversational AI aimed at seniors. The goal is to create curated
+            access to information and services in the.
+          </p>
+          <p className="text-sm font-medium text-muted">
+            Try to ask about news, events or movies, and how to get to places
+            using public transportation. The AI will answer with real data
+            fetched from appropriate APIs, RSS feeds and other sources such as
+            via web scraping.
           </p>
         </div>
       </header>
