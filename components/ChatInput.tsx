@@ -5,9 +5,14 @@ import { useState, KeyboardEvent } from "react";
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
   disabled?: boolean;
+  presetMessages?: string[];
 }
 
-export default function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
+export default function ChatInput({
+  onSendMessage,
+  disabled,
+  presetMessages,
+}: ChatInputProps) {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
@@ -24,8 +29,33 @@ export default function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
     }
   };
 
+  const handlePresetSend = (preset: string) => {
+    if (!disabled) {
+      onSendMessage(preset);
+      setMessage("");
+    }
+  };
+
   return (
     <div className="chat-input p-5">
+      {presetMessages && presetMessages.length > 0 && (
+        <div className="chat-input__preset-row">
+          <div className="chat-input__preset-label">Quick questions</div>
+          <div className="chat-input__preset-list">
+            {presetMessages.map((preset) => (
+              <button
+                key={preset}
+                type="button"
+                onClick={() => handlePresetSend(preset)}
+                disabled={disabled}
+                className="chat-input__preset-button disabled:cursor-not-allowed"
+              >
+                {preset}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="flex gap-3">
         <textarea
           value={message}

@@ -4,6 +4,12 @@ import { Message } from "@/types/profile";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 
+const PRESET_MESSAGES = [
+  "What's in the movies today?",
+  "How can I get to the Ateneum with public transportation?",
+  "What's happening in the news?",
+];
+
 interface ChatWindowProps {
   messages: Message[];
   onSendMessage: (message: string) => void;
@@ -60,7 +66,11 @@ export default function ChatWindow({
         )}
       </div>
       {selectedProfile && (
-        <ChatInput onSendMessage={onSendMessage} disabled={isLoading} />
+        <ChatInput
+          onSendMessage={onSendMessage}
+          disabled={isLoading}
+          presetMessages={PRESET_MESSAGES}
+        />
       )}
     </div>
   );
