@@ -37,9 +37,9 @@ export default function ChatInput({
   };
 
   return (
-    <div className="chat-input p-5">
+    <>
       {presetMessages && presetMessages.length > 0 && (
-        <div className="chat-input__preset-row">
+        <div className="chat-input__preset-row px-5">
           <div className="chat-input__preset-label">Quick questions</div>
           <div className="chat-input__preset-list">
             {presetMessages.map((preset) => (
@@ -56,24 +56,27 @@ export default function ChatInput({
           </div>
         </div>
       )}
-      <div className="flex gap-3">
-        <textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyPress}
-          placeholder="Type your message..."
-          disabled={disabled}
-          rows={1}
-          className="chat-input__textarea flex-1 disabled:cursor-not-allowed"
-        />
-        <button
-          onClick={handleSend}
-          disabled={disabled || !message.trim()}
-          className="chat-input__send disabled:cursor-not-allowed"
-        >
-          Send
-        </button>
+
+      <div className="chat-input p-5">
+        <div className="flex gap-3">
+          <textarea
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyPress}
+            placeholder="Type your message..."
+            disabled={disabled}
+            rows={1}
+            className="chat-input__textarea flex-1 disabled:cursor-not-allowed"
+          />
+          <button
+            onClick={handleSend}
+            disabled={disabled || !message.trim()}
+            className="chat-input__send disabled:cursor-not-allowed"
+          >
+            Send
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
