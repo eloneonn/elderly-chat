@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Life OS Assistant
+
+A demo app for Junction 2025.
+
+A ChatGPT-like application that connects to an n8n backend, allowing you to chat with personalized lifestyle profiles featuring different interests and activity levels.
+
+## Features
+
+- **Profile Selection**: Choose from 6 curated lifestyle profiles, each with unique interests and activity levels
+- **Chat Interface**: Modern, responsive chat UI similar to ChatGPT
+- **n8n Integration**: Connects to your n8n webhook endpoint for backend processing
+- **Real-time Messaging**: Send and receive messages through the n8n backend
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ installed
+- An n8n instance with a webhook endpoint set up
+
+### Installation
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Set up environment variables:
+
+```bash
+cp .env.local.example .env.local
+```
+
+3. Edit `.env.local` and add your n8n webhook URL:
+
+```
+N8N_WEBHOOK_URL=https://your-n8n-instance.com/webhook/your-webhook-id
+```
+
+### Running the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## n8n Webhook Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Your n8n webhook should accept POST requests with the following JSON structure:
 
-## Learn More
+```json
+{
+  "message": "User's message text",
+  "profile": {
+    "id": "profile-id",
+    "name": "Profile Name",
+    "interests": ["interest1", "interest2"],
+    "activityLevel": "low|medium|high"
+  }
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+The webhook should return a JSON response with a message field:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "message": "Response from n8n"
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Profiles
 
-## Deploy on Vercel
+The app includes 6 pre-configured profiles:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Marjorie Thompson** (78) - Low activity, gardening and reading enthusiast
+2. **Arthur Mitchell** (82) - Medium activity, woodworking and chess lover
+3. **Eleanor Chen** (75) - Medium activity, tai chi and calligraphy practitioner
+4. **Robert Williams** (80) - High activity, golf and travel enthusiast
+5. **Grace O'Malley** (76) - High activity, volunteer and book club member
+6. **Harold Jenkins** (79) - Low activity, fishing and model trains hobbyist
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **React 19** - UI library
+
+## Project Structure
+
+```
+life-os/
+├── app/
+│   ├── api/
+│   │   └── chat/
+│   │       └── route.ts      # API route for n8n integration
+│   ├── page.tsx               # Main page component
+│   └── layout.tsx             # Root layout
+├── components/
+│   ├── ChatInput.tsx          # Message input component
+│   ├── ChatMessage.tsx        # Individual message component
+│   ├── ChatWindow.tsx         # Chat container component
+│   └── ProfileSelector.tsx    # Profile selection component
+├── data/
+│   └── profiles.ts            # Profile data
+└── types/
+    └── profile.ts             # TypeScript type definitions
+```
+
+## Building for Production
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+MIT
