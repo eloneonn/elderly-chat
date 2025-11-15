@@ -17,13 +17,11 @@ export default function ProfileSelector({
     <>
       <header className="panel panel-strong w-full max-w-5xl px-8 py-6">
         <div className="flex flex-col gap-2">
-          <h1 className="text-3xl font-semibold tracking-tight">
-            Life OS Companion
-          </h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Life OS</h1>
           <p className="text-sm font-medium text-muted">
             A demo app to showcase the possibilities of tool-assisted
             conversational AI aimed at seniors. The goal is to create curated
-            access to information and services in the.
+            access to information and services in the internet.
           </p>
           <p className="text-sm font-medium text-muted">
             Try to ask about news, events or movies, and how to get to places
