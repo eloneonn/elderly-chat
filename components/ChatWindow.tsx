@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Message } from '@/types/profile';
-import ChatMessage from './ChatMessage';
-import ChatInput from './ChatInput';
+import { Message } from "@/types/profile";
+import ChatMessage from "./ChatMessage";
+import ChatInput from "./ChatInput";
 
 interface ChatWindowProps {
   messages: Message[];
@@ -25,11 +25,8 @@ export default function ChatWindow({
             <div className="text-2xl">{selectedProfile.avatar}</div>
             <div>
               <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-                Chatting with {selectedProfile.name}
+                Chatting as {selectedProfile.name}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Connected to n8n backend
-              </p>
             </div>
           </div>
         </div>
@@ -39,8 +36,8 @@ export default function ChatWindow({
           <div className="flex h-full items-center justify-center">
             <p className="text-gray-500 dark:text-gray-400">
               {selectedProfile
-                ? 'Start a conversation...'
-                : 'Please select a profile to begin chatting'}
+                ? "Start a conversation..."
+                : "Please select a profile to begin chatting"}
             </p>
           </div>
         ) : (

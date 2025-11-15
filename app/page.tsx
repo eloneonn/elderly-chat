@@ -68,8 +68,7 @@ export default function Home() {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content:
-          "Sorry, I encountered an error. Please check your n8n webhook URL configuration.",
+        content: "Sorry, I encountered an error. Try again later.",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
@@ -84,9 +83,6 @@ export default function Home() {
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
           Life OS Assistant
         </h1>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-          Connect with personalized lifestyle profiles via n8n backend
-        </p>
       </header>
 
       <main className="flex flex-1 flex-col p-6">
