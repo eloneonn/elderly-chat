@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Profile, Message } from "@/types/profile";
 import { profiles } from "@/data/profiles";
 import ProfileSelector from "@/components/ProfileSelector";
 import ChatWindow from "@/components/ChatWindow";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Home() {
   const [selectedProfile, setSelectedProfile] = useState<Profile | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const sessionId = useMemo(() => uuidv4(), []);
 
   const handleSelectProfile = (profile: Profile) => {
     setSelectedProfile(profile);
@@ -43,6 +46,7 @@ export default function Home() {
         body: JSON.stringify({
           message: content,
           profile: selectedProfile,
+          sessionId,
         }),
       });
 

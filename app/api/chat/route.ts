@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { message, profile } = body;
+    const { message, profile, sessionId } = body;
 
     // Get n8n webhook URL from environment variable
     const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL;
@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message,
+        chatInput: message,
+        sessionId: sessionId,
         profile: {
           id: profile.id,
           name: profile.name,
@@ -42,8 +43,7 @@ export async function POST(request: NextRequest) {
 
     // Return the response from n8n
     return NextResponse.json({
-      message:
-        data.message || data.response || data.text || "No response from n8n",
+      message: data.output || "No response from n8n",
     });
   } catch (error) {
     console.error("Error calling n8n webhook:", error);
