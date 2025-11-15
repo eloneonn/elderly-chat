@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Life OS",
+  title: "ESA",
   description:
     "A gentle companion experience for heartfelt conversations and friendly guidance.",
 };
