@@ -31,6 +31,8 @@ export async function POST(request: NextRequest) {
           name: profile.name,
           interests: profile.interests,
           activityLevel: profile.activityLevel,
+          location: profile.location,
+          age: profile.age,
         },
       }),
     });
