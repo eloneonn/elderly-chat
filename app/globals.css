@@ -1,26 +1,413 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7fbf6;
+  --background-soft: #eef6f1;
+  --bg-gradient-1: rgba(200, 238, 216, 0.6);
+  --bg-gradient-2: rgba(246, 220, 203, 0.45);
+  --bg-gradient-3: rgba(222, 230, 250, 0.5);
+  --bg-glow-1: rgba(217, 243, 228, 0.68);
+  --bg-glow-2: rgba(253, 237, 222, 0.55);
+  --bg-glow-3: rgba(226, 235, 255, 0.52);
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --surface-header: rgba(255, 255, 255, 0.74);
+  --surface-input: rgba(255, 255, 255, 0.88);
+  --surface-card: rgba(255, 255, 255, 0.76);
+  --surface-card-hover: rgba(255, 255, 255, 0.88);
+  --surface-card-selected: rgba(165, 224, 193, 0.28);
+  --surface-chat-assistant: rgba(255, 255, 255, 0.85);
+  --surface-chat-user: rgba(169, 229, 207, 0.96);
+  --surface-chat-typing: rgba(142, 209, 178, 0.18);
+  --foreground: #26433b;
+  --muted-foreground: #5f7d70;
+  --chip-bg: rgba(201, 234, 219, 0.85);
+  --chip-text: rgba(47, 81, 70, 0.85);
+  --border-soft: #cde8da;
+  --card-border: rgba(207, 231, 216, 0.85);
+  --card-border-selected: rgba(142, 209, 178, 0.6);
+  --chat-border: rgba(198, 225, 209, 0.8);
+  --primary: #8ed1b2;
+  --primary-strong: #7ac9a5;
+  --accent-peach: #f6c9a2;
+  --accent-mint: #d1f1de;
+  --badge-lavender: #e8edff;
+  --ring-focus: rgba(142, 209, 178, 0.35);
+  --input-border: rgba(207, 231, 216, 0.9);
+  --input-border-focus: rgba(142, 209, 178, 0.5);
+  --input-bg: rgba(255, 255, 255, 0.84);
+  --input-bg-disabled: rgba(255, 255, 255, 0.65);
+  --input-text-disabled: rgba(95, 125, 112, 0.7);
+  --assistant-meta: rgba(99, 130, 118, 0.72);
+  --user-meta: rgba(255, 255, 255, 0.78);
+  --button-disabled-bg: rgba(207, 231, 216, 0.8);
+  --button-disabled-text: rgba(95, 125, 112, 0.68);
+  --typing-dot: rgba(142, 209, 178, 0.85);
+  --activity-high-bg: rgba(183, 234, 207, 0.9);
+  --activity-high-text: #1f5c45;
+  --activity-medium-bg: rgba(251, 219, 188, 0.86);
+  --activity-medium-text: #7a4c21;
+  --activity-low-bg: rgba(222, 230, 250, 0.85);
+  --activity-low-text: #3f4670;
+  --card-shadow: none;
+  --card-shadow-hover: 0 18px 40px rgba(57, 91, 76, 0.14);
+  --card-shadow-selected: 0 20px 44px rgba(57, 91, 76, 0.18);
+  --bubble-shadow: 0 16px 32px rgba(57, 91, 76, 0.14);
+  --shadow-soft: 0 30px 60px rgba(57, 91, 76, 0.16);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1b18;
+    --background-soft: #091311;
+    --bg-gradient-1: rgba(42, 80, 68, 0.6);
+    --bg-gradient-2: rgba(62, 44, 72, 0.52);
+    --bg-gradient-3: rgba(84, 54, 65, 0.48);
+    --bg-glow-1: rgba(60, 102, 86, 0.38);
+    --bg-glow-2: rgba(94, 66, 112, 0.33);
+    --bg-glow-3: rgba(128, 84, 96, 0.3);
+    --surface: rgba(24, 38, 34, 0.78);
+    --surface-strong: rgba(30, 46, 42, 0.9);
+    --surface-header: rgba(22, 36, 31, 0.88);
+    --surface-input: rgba(18, 32, 28, 0.92);
+    --surface-card: rgba(24, 38, 34, 0.78);
+    --surface-card-hover: rgba(30, 48, 43, 0.82);
+    --surface-card-selected: rgba(40, 70, 60, 0.88);
+    --surface-chat-assistant: rgba(29, 46, 40, 0.82);
+    --surface-chat-user: rgba(122, 195, 166, 0.92);
+    --surface-chat-typing: rgba(122, 195, 166, 0.22);
+    --foreground: #f1f7f4;
+    --muted-foreground: #bfd2c7;
+    --chip-bg: rgba(51, 91, 77, 0.65);
+    --chip-text: rgba(223, 240, 232, 0.82);
+    --border-soft: rgba(70, 108, 92, 0.55);
+    --card-border: rgba(70, 108, 92, 0.55);
+    --card-border-selected: rgba(122, 195, 166, 0.6);
+    --chat-border: rgba(64, 100, 86, 0.55);
+    --primary: #7cc9a5;
+    --primary-strong: #6cbf98;
+    --ring-focus: rgba(122, 195, 166, 0.45);
+    --input-border: rgba(70, 108, 92, 0.6);
+    --input-border-focus: rgba(122, 195, 166, 0.55);
+    --input-bg: rgba(16, 28, 24, 0.92);
+    --input-bg-disabled: rgba(16, 28, 24, 0.65);
+    --input-text-disabled: rgba(156, 181, 167, 0.75);
+    --assistant-meta: rgba(170, 198, 187, 0.7);
+    --user-meta: rgba(241, 255, 250, 0.76);
+    --button-disabled-bg: rgba(44, 71, 60, 0.6);
+    --button-disabled-text: rgba(175, 203, 191, 0.62);
+    --typing-dot: rgba(122, 195, 166, 0.75);
+    --activity-high-bg: rgba(60, 98, 80, 0.55);
+    --activity-high-text: #d4f7e8;
+    --activity-medium-bg: rgba(112, 82, 57, 0.55);
+    --activity-medium-text: #f5d9bf;
+    --activity-low-bg: rgba(70, 58, 95, 0.55);
+    --activity-low-text: #ecdefb;
+    --card-shadow: none;
+    --card-shadow-hover: 0 20px 48px rgba(4, 12, 10, 0.5);
+    --card-shadow-selected: 0 22px 56px rgba(4, 12, 10, 0.55);
+    --bubble-shadow: 0 20px 44px rgba(4, 12, 10, 0.48);
+    --shadow-soft: 0 36px 80px rgba(4, 12, 10, 0.55);
+    --chat-scrollbar-track: rgba(20, 30, 27, 0.5);
+    --chat-scrollbar-thumb: rgba(116, 151, 139, 0.55);
+    --button-shadow: 0 20px 42px rgba(124, 201, 165, 0.32);
+  }
+}
+
+:root {
+  --chat-header-bg: var(--surface-header);
+  --chat-input-bg: var(--surface-input);
+  --chat-assistant-bg: var(--surface-chat-assistant);
+  --chat-assistant-border: var(--card-border);
+  --chat-user-bg: var(--surface-chat-user);
+  --chat-typing-bg: var(--surface-chat-typing);
+  --chat-scrollbar-track: rgba(209, 231, 219, 0.45);
+  --chat-scrollbar-thumb: rgba(133, 174, 157, 0.5);
+  --card-focus-ring: var(--ring-focus);
+  --button-shadow: 0 18px 32px rgba(142, 209, 178, 0.35);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-border: var(--border-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+body {
+  min-height: 100vh;
+  background-color: var(--background-soft);
+  background-image:
+    radial-gradient(100% 120% at 0% 0%, var(--bg-gradient-1) 0%, transparent 60%),
+    radial-gradient(120% 110% at 100% 0%, var(--bg-gradient-2) 0%, transparent 55%),
+    radial-gradient(140% 120% at 50% 100%, var(--bg-gradient-3) 0%, transparent 60%),
+    linear-gradient(180deg, var(--background) 0%, var(--background-soft) 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(38% 40% at 12% 18%, var(--bg-glow-1), transparent),
+    radial-gradient(46% 46% at 85% 12%, var(--bg-glow-2), transparent),
+    radial-gradient(50% 50% at 50% 80%, var(--bg-glow-3), transparent);
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+}
+
+.app-shell {
+  color: var(--foreground);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+}
+
+.panel-strong {
+  background: var(--surface-strong);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--foreground);
+}
+
+textarea,
+input {
+  font-family: inherit;
+  color: inherit;
+}
+
+.profile-card {
+  border-radius: 1.5rem;
+  border: 2px solid var(--card-border);
+  background: var(--surface-card);
+  box-shadow: var(--card-shadow);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease,
+    background-color 200ms ease;
+  backdrop-filter: blur(16px);
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  background: var(--surface-card-hover);
+}
+
+.profile-card.is-selected {
+  border-color: var(--card-border-selected);
+  background: var(--surface-card-selected);
+  box-shadow: var(--card-shadow-selected);
+  transform: translateY(-1px);
+}
+
+.profile-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--card-focus-ring);
+  transform: translateY(-1px);
+}
+
+.interest-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--chip-bg);
+  color: var(--chip-text);
+  letter-spacing: 0.01em;
+}
+
+.activity-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: var(--activity-low-bg);
+  color: var(--activity-low-text);
+  text-transform: capitalize;
+}
+
+.activity-tag--medium {
+  background: var(--activity-medium-bg);
+  color: var(--activity-medium-text);
+}
+
+.activity-tag--high {
+  background: var(--activity-high-bg);
+  color: var(--activity-high-text);
+}
+
+.chat-window {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.chat-window__header {
+  background: var(--chat-header-bg);
+  border-bottom: 1px solid var(--chat-border);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  backdrop-filter: blur(16px);
+}
+
+.chat-scroll-area {
+  scrollbar-width: thin;
+  scrollbar-color: var(--chat-scrollbar-thumb) var(--chat-scrollbar-track);
+}
+
+.chat-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scroll-area::-webkit-scrollbar-track {
+  background: var(--chat-scrollbar-track);
+  border-radius: 999px;
+}
+
+.chat-scroll-area::-webkit-scrollbar-thumb {
+  background-color: var(--chat-scrollbar-thumb);
+  border-radius: 999px;
+}
+
+.typing-indicator {
+  border-radius: 1.25rem;
+  background: var(--chat-typing-bg);
+  backdrop-filter: blur(12px);
+}
+
+.typing-indicator__dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background: var(--typing-dot);
+}
+
+.chat-bubble {
+  max-width: min(32rem, 80%);
+  border-radius: 1.75rem;
+  padding: 0.9rem 1.25rem;
+  box-shadow: var(--bubble-shadow);
+  backdrop-filter: blur(14px);
+  transition: transform 180ms ease;
+}
+
+.chat-bubble--assistant {
+  background: var(--chat-assistant-bg);
+  color: var(--foreground);
+  border: 1px solid var(--chat-assistant-border);
+}
+
+.chat-bubble--user {
+  background: var(--chat-user-bg);
+  color: #ffffff;
+}
+
+.chat-bubble__meta {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+}
+
+.chat-bubble--assistant .chat-bubble__meta {
+  color: var(--assistant-meta);
+}
+
+.chat-bubble--user .chat-bubble__meta {
+  color: var(--user-meta);
+}
+
+.chat-input {
+  background: var(--chat-input-bg);
+  border-top: 1px solid var(--chat-border);
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  backdrop-filter: blur(16px);
+}
+
+.chat-input__textarea {
+  width: 100%;
+  border-radius: 1.25rem;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  padding: 0.75rem 1rem;
+  color: var(--foreground);
+  resize: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.chat-input__textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.chat-input__textarea:focus-visible {
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: 0 0 0 3px var(--ring-focus);
+  background: rgba(255, 255, 255, 0.9);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .chat-input__textarea:focus-visible {
+    background: rgba(37, 26, 52, 0.98);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.chat-input__textarea:disabled {
+  background: var(--input-bg-disabled);
+  color: var(--input-text-disabled);
+}
+
+.chat-input__textarea:disabled::placeholder {
+  color: var(--input-text-disabled);
+}
+
+.chat-input__send {
+  border: none;
+  border-radius: 1.25rem;
+  padding: 0.85rem 1.75rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: var(--button-shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  cursor: pointer;
+}
+
+.chat-input__send:hover:not(:disabled) {
+  background: var(--primary-strong);
+  transform: translateY(-1px);
+}
+
+.chat-input__send:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring-focus);
+}
+
+.chat-input__send:disabled {
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-text);
+  box-shadow: none;
+  cursor: not-allowed;
 }

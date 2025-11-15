@@ -18,23 +18,23 @@ export default function ChatWindow({
   selectedProfile,
 }: ChatWindowProps) {
   return (
-    <div className="flex h-full flex-col">
+    <div className="chat-window flex h-full flex-col rounded-[inherit]">
       {selectedProfile && (
-        <div className="border-b border-gray-200 bg-gray-50 px-4 py-3 dark:border-gray-700 dark:bg-gray-800">
+        <div className="chat-window__header px-5 py-4">
           <div className="flex items-center gap-3">
             <div className="text-2xl">{selectedProfile.avatar}</div>
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="font-semibold text-foreground">
                 Chatting as {selectedProfile.name}
               </h3>
             </div>
           </div>
         </div>
       )}
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="chat-scroll-area flex-1 min-h-0 overflow-y-auto p-5">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center">
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-center text-base font-medium text-muted">
               {selectedProfile
                 ? "Start a conversation..."
                 : "Please select a profile to begin chatting"}
@@ -47,11 +47,11 @@ export default function ChatWindow({
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-gray-100 px-4 py-3 dark:bg-gray-700">
+                <div className="typing-indicator px-4 py-3">
                   <div className="flex gap-1">
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.3s]"></div>
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:-0.15s]"></div>
-                    <div className="h-2 w-2 animate-bounce rounded-full bg-gray-400"></div>
+                    <div className="typing-indicator__dot animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="typing-indicator__dot animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="typing-indicator__dot animate-bounce"></div>
                   </div>
                 </div>
               </div>
