@@ -58,14 +58,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #030806;
-    --background-soft: #020605;
-    --bg-gradient-1: rgba(26, 52, 42, 0.38);
-    --bg-gradient-2: rgba(44, 30, 62, 0.32);
-    --bg-gradient-3: rgba(52, 28, 36, 0.28);
-    --bg-glow-1: rgba(38, 66, 56, 0.26);
-    --bg-glow-2: rgba(70, 46, 86, 0.22);
-    --bg-glow-3: rgba(90, 50, 64, 0.2);
+    --background: #0f1b18;
+    --background-soft: #091311;
+    --bg-gradient-1: rgba(42, 80, 68, 0.6);
+    --bg-gradient-2: rgba(62, 44, 72, 0.52);
+    --bg-gradient-3: rgba(84, 54, 65, 0.48);
+    --bg-glow-1: rgba(60, 102, 86, 0.38);
+    --bg-glow-2: rgba(94, 66, 112, 0.33);
+    --bg-glow-3: rgba(128, 84, 96, 0.3);
     --surface: rgba(24, 38, 34, 0.78);
     --surface-strong: rgba(30, 46, 42, 0.9);
     --surface-header: rgba(22, 36, 31, 0.88);
@@ -111,10 +111,6 @@
     --chat-scrollbar-track: rgba(20, 30, 27, 0.5);
     --chat-scrollbar-thumb: rgba(116, 151, 139, 0.55);
     --button-shadow: 0 20px 42px rgba(124, 201, 165, 0.32);
-  }
-
-  body::before {
-    opacity: 0.4;
   }
 }
 
