@@ -69,7 +69,7 @@ export default function ChatWindow({
         <ChatInput
           onSendMessage={onSendMessage}
           disabled={isLoading}
-          presetMessages={PRESET_MESSAGES}
+          presetMessages={messages.length === 0 ? PRESET_MESSAGES : undefined}
         />
       )}
     </div>
